@@ -81,7 +81,9 @@ export default {
 
       return _.keyBy(
         this.value,
-        this.options.translationLanguageField + "." + this.options.languagesPrimaryKeyField
+        (valueItem) => {
+          return _.get(valueItem, this.options.translationLanguageField);
+        }
       );
     },
     fieldManyName() {
